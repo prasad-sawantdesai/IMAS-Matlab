@@ -1,0 +1,1149 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="">
+    
+    
+      
+        <title>Building and installing the IMAS-MATLAB - MATLAB Access Layer  documentation</title>
+      
+    
+    
+      
+        
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.079acc6b1264de723.min.css" />
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="green">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#prerequisites" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="MATLAB Access Layer  documentation" class="md-header__button md-logo" aria-label="MATLAB Access Layer  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MATLAB Access Layer  documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Building and installing the IMAS-MATLAB
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="green"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://git.iter.org/projects/IMAS/repos/access-layer" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M22.2 32A16 16 0 0 0 6 47.8a26.35 26.35 0 0 0 .2 2.8l67.9 412.1a21.77 21.77 0 0 0 21.3 18.2h325.7a16 16 0 0 0 16-13.4L505 50.7a16 16 0 0 0-13.2-18.3 24.58 24.58 0 0 0-2.8-.2L22.2 32zm285.9 297.8h-104l-28.1-147h157.3l-25.2 147z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Access Layer
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="MATLAB Access Layer  documentation" class="md-nav__button md-logo" aria-label="MATLAB Access Layer  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+    </a>
+    MATLAB Access Layer  documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://git.iter.org/projects/IMAS/repos/access-layer" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M22.2 32A16 16 0 0 0 6 47.8a26.35 26.35 0 0 0 .2 2.8l67.9 412.1a21.77 21.77 0 0 0 21.3 18.2h325.7a16 16 0 0 0 16-13.4L505 50.7a16 16 0 0 0-13.2-18.3 24.58 24.58 0 0 0-2.8-.2L22.2 32zm285.9 297.8h-104l-28.1-147h157.3l-25.2 147z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Access Layer
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          <span class="md-ellipsis">Contents:<wbr></span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Contents:" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Contents:<wbr></span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting_started.html" class="md-nav__link">
+        <span class="md-ellipsis">Getting Started with IMAS-<wbr>MATLAB</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="imas.html" class="md-nav__link">
+        <span class="md-ellipsis">IMAS overview</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="using_al.html" class="md-nav__link">
+        <span class="md-ellipsis">Using the IMAS-<wbr>MATLAB</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="load_store_ids.html" class="md-nav__link">
+        <span class="md-ellipsis">Loading and storing IMAS data</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="use_ids.html" class="md-nav__link">
+        <span class="md-ellipsis">Use Interface Data Structures</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="imas_uri.html" class="md-nav__link">
+        <span class="md-ellipsis">IMAS Data Entry URIs</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="identifiers.html" class="md-nav__link">
+        <span class="md-ellipsis">Identifiers</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          <span class="md-ellipsis">Examples</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Examples</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="examples/examples_ToC.html" class="md-nav__link">
+        <span class="md-ellipsis">Basic Examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          <span class="md-ellipsis">API documentation</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API documentation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">API documentation</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api_dbentry.html" class="md-nav__link">
+        <span class="md-ellipsis">Data entry API</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api_ids.html" class="md-nav__link">
+        <span class="md-ellipsis">IDS API</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          <span class="md-ellipsis">AL Developer documentation</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="AL Developer documentation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">AL Developer documentation</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span class="md-ellipsis">Building and installing the IMAS-<wbr>MATLAB</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        <span class="md-ellipsis">Building and installing the IMAS-<wbr>MATLAB</span>
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span title="prerequisites (reference label)" class="md-ellipsis">Prerequisites</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-and-installing-a-single-high-level-interface" class="md-nav__link">
+    <span title="building and installing a single high level interface (reference label)" class="md-ellipsis">Building and installing a single High Level Interface</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Building and installing a single High Level Interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clone-the-repository" class="md-nav__link">
+    <span title="clone the repository (reference label)" class="md-ellipsis">Clone the repository</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span title="configuration (reference label)" class="md-ellipsis">Configuration</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#choosing-the-compilers" class="md-nav__link">
+    <span title="choosing the compilers (reference label)" class="md-ellipsis">Choosing the compilers</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-options" class="md-nav__link">
+    <span title="configuration options (reference label)" class="md-ellipsis">Configuration options</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-the-high-level-interface" class="md-nav__link">
+    <span title="build the high level interface (reference label)" class="md-ellipsis">Build the High Level Interface</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-test-the-high-level-interface" class="md-nav__link">
+    <span title="optional: test the high level interface (reference label)" class="md-ellipsis">Optional:<wbr> Test the High Level Interface</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-the-high-level-interface" class="md-nav__link">
+    <span title="install the high level interface (reference label)" class="md-ellipsis">Install the High Level Interface</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-the-high-level-interface" class="md-nav__link">
+    <span title="use the high level interface (reference label)" class="md-ellipsis">Use the High Level Interface</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span title="troubleshooting (reference label)" class="md-ellipsis">Troubleshooting</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="matlab_on_windows.html" class="md-nav__link">
+        <span class="md-ellipsis">Windows Installation Guide</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dev_guide.html" class="md-nav__link">
+        <span class="md-ellipsis">IMAS-<wbr>MATLAB development guide</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span title="prerequisites (reference label)" class="md-ellipsis">Prerequisites</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-and-installing-a-single-high-level-interface" class="md-nav__link">
+    <span title="building and installing a single high level interface (reference label)" class="md-ellipsis">Building and installing a single High Level Interface</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Building and installing a single High Level Interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clone-the-repository" class="md-nav__link">
+    <span title="clone the repository (reference label)" class="md-ellipsis">Clone the repository</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span title="configuration (reference label)" class="md-ellipsis">Configuration</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#choosing-the-compilers" class="md-nav__link">
+    <span title="choosing the compilers (reference label)" class="md-ellipsis">Choosing the compilers</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-options" class="md-nav__link">
+    <span title="configuration options (reference label)" class="md-ellipsis">Configuration options</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-the-high-level-interface" class="md-nav__link">
+    <span title="build the high level interface (reference label)" class="md-ellipsis">Build the High Level Interface</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-test-the-high-level-interface" class="md-nav__link">
+    <span title="optional: test the high level interface (reference label)" class="md-ellipsis">Optional:<wbr> Test the High Level Interface</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-the-high-level-interface" class="md-nav__link">
+    <span title="install the high level interface (reference label)" class="md-ellipsis">Install the High Level Interface</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-the-high-level-interface" class="md-nav__link">
+    <span title="use the high level interface (reference label)" class="md-ellipsis">Use the High Level Interface</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span title="troubleshooting (reference label)" class="md-ellipsis">Troubleshooting</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                  
+
+
+<h1 id="building-and-installing-the-imas-matlab">Building and installing the IMAS-MATLAB<a class="headerlink" href="#building-and-installing-the-imas-matlab" title="Permalink to this heading">¶</a></h1>
+<p>This page describes how to build and install the IMAS-MATLAB.</p>
+<p>Documentation for developers wishing to contribute to the IMAS-MATLAB can be found in
+the <a class="reference internal" href="dev_guide.html#imas-matlab-development-guide"><span class="std std-ref">IMAS-MATLAB development guide</span></a>. Please refer to that guide if you wish to set
+up a development environment.</p>
+<p>For more information about related components, see:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://imas-core.readthedocs.io/en/latest/">IMAS Core Documentation</a></p></li>
+<li><p><a class="reference external" href="https://imas-data-dictionary.readthedocs.io/en/latest/">IMAS Data Dictionary Documentation</a></p></li>
+</ul>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>For Windows-specific installation instructions, please refer to the
+<a class="reference internal" href="matlab_on_windows.html"><span class="doc">MATLAB on Windows</span></a> guide.</p>
+</div>
+<h2 id="prerequisites"><span id="build-prerequisites"></span>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">¶</a></h2>
+<p>To build the IMAS-MATLAB you need:</p>
+<ul class="simple">
+<li><p>Git</p></li>
+<li><p>A C++11 compiler (tested with GCC and Intel compilers)</p></li>
+<li><p>CMake (3.16 or newer)</p></li>
+<li><p>Boost C++ libraries (1.66 or newer)</p></li>
+<li><p>PkgConfig</p></li>
+</ul>
+<p>The following dependencies are only required for some of the components:</p>
+<ul class="simple">
+<li><p>Backends</p>
+<ul>
+<li><p><strong>HDF5 backend</strong>: HDF5 C/C++ libraries (1.8.12 or newer)</p></li>
+<li><p><strong>MDSplus backend</strong>: MDSplus libraries (7.84.8 or newer)</p></li>
+<li><p><strong>UDA backend</strong>: <a class="reference external" href="https://github.com/ukaea/UDA/">UDA</a> libraries
+(2.7.5 or newer) <a class="footnote-reference brackets" href="#uda-install" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
+</ul>
+</li>
+</ul>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="uda-install" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>When installing UDA, make sure you have
+<a class="reference external" href="https://github.com/capnproto/capnproto">Cap’n’Proto</a> installed in your system
+and add its support by adding the CMake switch <cite>-DENABLE_CAPNP=ON</cite> when configuring UDA.</p>
+</aside>
+</aside>
+<ul class="simple">
+<li><p>MATLAB High Level Interface</p>
+<ul>
+<li><p><strong>MATLAB High Level Interface</strong>: A working MATLAB installation (tested with
+version 2023b)</p></li>
+</ul>
+</li>
+</ul>
+<p>Standard environments:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3">
+<input checked type="radio" id="__tabbed_1_1" name="__tabbed_1"><input type="radio" id="__tabbed_1_2" name="__tabbed_1"><input type="radio" id="__tabbed_1_3" name="__tabbed_1"><div class="tabbed-labels docutils container">
+<label class="tabbed-label" for="__tabbed_1_1">
+SDCC <code class="docutils literal notranslate"><span class="pre">intel-2023b</span></code></label><label class="tabbed-label" for="__tabbed_1_2">
+SDCC <code class="docutils literal notranslate"><span class="pre">foss-2023b</span></code></label><label class="tabbed-label" for="__tabbed_1_3">
+Ubuntu 22.04</label></div>
+<div class="tabbed-content docutils container">
+<div class="tabbed-block docutils container">
+<p>The following modules provide all the requirements when using the
+<code class="docutils literal notranslate"><span class="pre">intel-2023b</span></code> toolchain:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>intel-compilers/2023.2.1<span class="w"> </span>CMake/3.27.6-GCCcore-13.2.0<span class="w"> </span>Saxon-HE/12.4-Java-21<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>Boost/1.83.0-iimpi-2023b<span class="w"> </span>HDF5/1.14.3-iimpi-2023b<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>MDSplus/7.132.0-GCCcore-13.2.0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>UDA/2.8.1-iimpi-2023b<span class="w"> </span>Blitz++/1.0.2-GCCcore-13.2.0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>MATLAB/2023b-r5-GCCcore-13.2.0<span class="w"> </span>SciPy-bundle/2023.11-intel-2023b<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>scikit-build-core/0.9.3-GCCcore-13.2.0
+</code></pre></div>
+</div>
+</div>
+<div class="tabbed-block docutils container">
+<p>The following modules provide all the requirements when using the
+<code class="docutils literal notranslate"><span class="pre">foss-2023b</span></code> toolchain:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>CMake/3.27.6-GCCcore-13.2.0<span class="w"> </span>Saxon-HE/12.4-Java-21<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>Boost/1.83.0-GCC-13.2.0<span class="w"> </span>HDF5/1.14.3-gompi-2023b<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>MDSplus/7.132.0-GCCcore-13.2.0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>UDA/2.8.1-GCC-13.2.0<span class="w"> </span>Blitz++/1.0.2-GCCcore-13.2.0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>MATLAB/2023b-r5-GCCcore-13.2.0<span class="w"> </span>SciPy-bundle/2023.11-gfbf-2023b<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>build/1.0.3-foss-2023b<span class="w"> </span>scikit-build-core/0.9.3-GCCcore-13.2.0
+</code></pre></div>
+</div>
+<div class="admonition">
+<p class="admonition-title">The MATLAB/2023b-r5 installation is lightly tweaked</p>
+<p>The installation at ITER uses <a class="reference external" href="https://github.com/easybuilders/easybuild-easyconfigs/pull/20508">EB PR#20508</a>
+and its tweak resolves <a class="reference external" href="https://jira.iter.org/browse/IMAS-5162">IMAS-5162</a>
+by removing <code class="docutils literal notranslate"><span class="pre">libstdc++.so.6</span></code> from the MATLAB installation. It also adds
+<code class="docutils literal notranslate"><span class="pre">extern/bin/glnxa64</span></code> to <code class="docutils literal notranslate"><span class="pre">LD_LIBRARY_PATH</span></code> to address the
+<code class="docutils literal notranslate"><span class="pre">MatlabEngine</span> <span class="pre">not</span> <span class="pre">found</span></code> issue.</p>
+</div>
+<div class="caution admonition">
+<p class="admonition-title">Caution</p>
+<p>When using the HDF5 backend within MATLAB, depending on the HDF5 library being used
+you may need to add <code class="docutils literal notranslate"><span class="pre">LD_PRELOAD=&lt;hdf5_install_dir&gt;/lib/libhdf5_hl.so</span></code> when starting
+MATLAB.</p>
+</div>
+</div>
+<div class="tabbed-block docutils container">
+<p>The following packages provide most requirements when using Ubuntu 22.04:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>apt<span class="w"> </span>install<span class="w"> </span>git<span class="w"> </span>build-essential<span class="w"> </span>cmake<span class="w"> </span>libsaxonhe-java<span class="w"> </span>libboost-all-dev<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>pkg-config<span class="w"> </span>libhdf5-dev<span class="w"> </span>xsltproc<span class="w"> </span>libblitz0-dev<span class="w"> </span>gfortran<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>default-jdk-headless<span class="w"> </span>python3-dev<span class="w"> </span>python3-venv<span class="w"> </span>python3-pip
+</code></pre></div>
+</div>
+<p>The following dependencies are not available from the package repository,
+you will need to install them yourself:</p>
+<ul class="simple">
+<li><p>MDSplus: see their <a class="reference external" href="https://github.com/MDSplus/mdsplus">GitHub repository</a> or <a class="reference external" href="https://mdsplus.org/">home page</a> for installation instructions.</p></li>
+<li><p>UDA: see their <a class="reference external" href="https://github.com/ukaea/UDA">GitHub repository</a> for more
+details.</p></li>
+<li><p>MATLAB, which is not freely available.</p></li>
+</ul>
+</div>
+</div>
+</div><h2 id="building-and-installing-a-single-high-level-interface">Building and installing a single High Level Interface<a class="headerlink" href="#building-and-installing-a-single-high-level-interface" title="Permalink to this heading">¶</a></h2>
+<p>This section explains how to install a Matlab High Level Interface. Please make sure you
+have the <a class="reference internal" href="#build-prerequisites"><span class="std std-ref">Prerequisites</span></a> installed.</p>
+<h3 id="clone-the-repository">Clone the repository<a class="headerlink" href="#clone-the-repository" title="Permalink to this heading">¶</a></h3>
+<p>First you need to clone the repository of the High Level Interface you want to build:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code><span class="c1"># For the MATLAB HLI use:</span>
+git<span class="w"> </span>clone<span class="w"> </span>git@github.com:iterorganization/IMAS-MATLAB.git
+</code></pre></div>
+</div>
+<h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">¶</a></h3>
+<p>Once you have cloned the repository, navigate your shell to the folder and run cmake.
+You can pass configuration options with <code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">OPTION=VALUE</span></code>. See below list for an
+overview of configuration options.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>al-matlab<span class="w">  </span><span class="c1"># al-fortran, al-java, al-cpp or al-python</span>
+cmake<span class="w"> </span>-B<span class="w"> </span>build<span class="w"> </span>-D<span class="w"> </span><span class="nv">CMAKE_INSTALL_PREFIX</span><span class="o">=</span><span class="nv">$HOME</span>/al-install<span class="w"> </span>-D<span class="w"> </span><span class="nv">OPTION1</span><span class="o">=</span>VALUE1<span class="w"> </span>-D<span class="w"> </span><span class="nv">OPTION2</span><span class="o">=</span>VALUE2<span class="w"> </span><span class="o">[</span>...<span class="o">]</span>
+</code></pre></div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>CMake will automatically fetch dependencies from other IMAS-MATLAB GIT repositories
+for you. You may need to provide credentials to clone the following repositories:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/iterorganization/IMAS-Core">imas-core (git&#64;github.com:iterorganization/IMAS-Core.git)</a></p></li>
+<li><p><a class="reference external" href="https://github.com/iterorganization/al-plugins">al-plugins (https://github.com/iterorganization/al-plugins.git)</a></p></li>
+<li><p><a class="reference external" href="https://github.com/iterorganization/IMAS-Data-Dictionary">imas-data-dictionary (git&#64;github.com:iterorganization/IMAS-Data-Dictionary.git)</a></p></li>
+</ul>
+<p>If you need to change the git repositories, for example to point to a mirror of the
+repository or to use a HTTPS URL instead of the default SSH URLs, you can update the
+<a class="reference internal" href="#configuration-options"><span class="std std-ref">Configuration options</span></a>. For example, add the following options to your
+<code class="docutils literal notranslate"><span class="pre">cmake</span></code> command to download the repositories over HTTPS instead of SSH:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Use explicit options to download dependent repositories over HTTPS<a class="headerlink" href="#id2" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><code>cmake -B build \
+    -D AL_CORE_GIT_REPOSITORY=git@github.com:iterorganization/IMAS-Core.git \
+    -D AL_PLUGINS_GIT_REPOSITORY=git@github.com:iterorganization/al-plugins.git \
+    -D DD_GIT_REPOSITORY=git@github.com:iterorganization/IMAS-Data-Dictionary.git
+</code></pre></div>
+</div>
+</div>
+<p>If you use CMake 3.21 or newer, you can also use the <code class="docutils literal notranslate"><span class="pre">https</span></code> preset:</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Use CMake preset to set to download dependent repositories over HTTPS<a class="headerlink" href="#id3" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><code>cmake -B build --preset=https
+</code></pre></div>
+</div>
+</div>
+</div>
+<h4 id="choosing-the-compilers">Choosing the compilers<a class="headerlink" href="#choosing-the-compilers" title="Permalink to this heading">¶</a></h4>
+<p>You can instruct CMake to use compilers with the following environment variables:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CC</span></code>: C compiler, for example <code class="docutils literal notranslate"><span class="pre">gcc</span></code> or <code class="docutils literal notranslate"><span class="pre">icc</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CXX</span></code>: C++ compiler, for example <code class="docutils literal notranslate"><span class="pre">g++</span></code> or <code class="docutils literal notranslate"><span class="pre">icpc</span></code>.</p></li>
+</ul>
+<p>If you don’t specify a compiler, CMake will take a default (usually from the Gnu
+Compiler Collection).</p>
+<div class="important admonition">
+<p class="admonition-title">Important</p>
+<p>These environment variables must be set before the first time you configure
+<code class="docutils literal notranslate"><span class="pre">cmake</span></code>!</p>
+<p>If you have an existing <code class="docutils literal notranslate"><span class="pre">build</span></code> folder and want to use a different compiler, you
+should delete the <code class="docutils literal notranslate"><span class="pre">build</span></code> folder first, or use a differently named folder for the
+build tree.</p>
+</div>
+<h4 id="configuration-options">Configuration options<a class="headerlink" href="#configuration-options" title="Permalink to this heading">¶</a></h4>
+<p>For a complete list of available configuration options, please see the <a class="reference external" href="https://imas-core.readthedocs.io/en/latest/user_guide/installation.html#configuration-options">IMAS Core Configuration Options</a>.</p>
+<h3 id="build-the-high-level-interface">Build the High Level Interface<a class="headerlink" href="#build-the-high-level-interface" title="Permalink to this heading">¶</a></h3>
+<p>Use <code class="docutils literal notranslate"><span class="pre">make</span></code> to build everything. You can speed things up by using parallel compiling
+as shown with the <code class="docutils literal notranslate"><span class="pre">-j</span></code> option. Be careful with the amount of parallel processes
+though: it’s easy to exhaust your machine’s available hardware (CPU or memory) which may
+cause the build to fail. This is especially the case with the C++ High Level Interface.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code><span class="c1"># Instruct make to build &quot;all&quot; in the &quot;build&quot; folder, using at most &quot;8&quot; parallel</span>
+<span class="c1"># processes:</span>
+make<span class="w"> </span>-C<span class="w"> </span>build<span class="w"> </span>-j8<span class="w"> </span>all
+</code></pre></div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>By default CMake on Linux will create <code class="docutils literal notranslate"><span class="pre">Unix</span> <span class="pre">Makefiles</span></code> for actually building
+everything, as assumed in this section.</p>
+<p>You can select different generators (such as Ninja) if you prefer, but these are not
+tested. See the <a class="reference external" href="https://cmake.org/cmake/help/latest/manual/cmake-generators.7.html">CMake documentation</a> for more
+details.</p>
+</div>
+<h3 id="optional-test-the-high-level-interface">Optional: Test the High Level Interface<a class="headerlink" href="#optional-test-the-high-level-interface" title="Permalink to this heading">¶</a></h3>
+<p>If you set either of the options <code class="docutils literal notranslate"><span class="pre">AL_EXAMPLES</span></code> or <code class="docutils literal notranslate"><span class="pre">AL_TESTS</span></code> to <code class="docutils literal notranslate"><span class="pre">ON</span></code>, you can run
+the corresponding test programs as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code><span class="c1"># Use make:</span>
+make<span class="w"> </span>-C<span class="w"> </span>build<span class="w"> </span><span class="nb">test</span>
+<span class="c1"># Directly invoke ctest</span>
+ctest<span class="w"> </span>--test-dir<span class="w"> </span>build
+</code></pre></div>
+</div>
+<p>This executes <code class="docutils literal notranslate"><span class="pre">ctest</span></code> to run all test and example programs. Note that this may take a
+long time to complete.</p>
+<h3 id="install-the-high-level-interface">Install the High Level Interface<a class="headerlink" href="#install-the-high-level-interface" title="Permalink to this heading">¶</a></h3>
+<p>Run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">install</span></code> to install the high level interface in the folder that you chose in
+the configuration step above.</p>
+<h3 id="use-the-high-level-interface">Use the High Level Interface<a class="headerlink" href="#use-the-high-level-interface" title="Permalink to this heading">¶</a></h3>
+<p>After installing the HLI, you need to ensure that your code can find the installed
+IMAS-MATLAB. To help you with this, a file <code class="docutils literal notranslate"><span class="pre">al_env.sh</span></code> is installed. You can
+<code class="docutils literal notranslate"><span class="pre">source</span></code> this file to set all required environment variables:</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Set environment variables (replace <code class="docutils literal notranslate"><span class="pre">&lt;install_dir&gt;</span></code> with your install folder)<a class="headerlink" href="#id4" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>&lt;install_dir&gt;/bin/al_env.sh
+</code></pre></div>
+</div>
+</div>
+<p>You may want to add this to your <code class="docutils literal notranslate"><span class="pre">$HOME/.bashrc</span></code> file to automatically make the Access
+Layer installation available for you.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>To use a <code class="docutils literal notranslate"><span class="pre">public</span></code> dataset, you also need to set the <code class="docutils literal notranslate"><span class="pre">IMAS_HOME</span></code> environment
+variable. For example, on SDCC, this would be <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">IMAS_HOME=/work/imas</span></code>.</p>
+<p>Some programs may rely on an environment variable <code class="docutils literal notranslate"><span class="pre">IMAS_VERSION</span></code> to detect which
+version of the data dictionary is used in the current IMAS environment. You may set
+it manually with the DD version you’ve build the HLI with, for example: <code class="docutils literal notranslate"><span class="pre">export</span>
+<span class="pre">IMAS_VERSION=3.41.0</span></code>.</p>
+</div>
+<p>Once you have set the required environment variables, you may continue <a class="reference internal" href="using_al.html#using-the-imas-matlab"><span class="std std-ref">Using the IMAS-MATLAB</span></a>.</p>
+<h3 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">¶</a></h3>
+<dl class="simple">
+<dt><strong>Problem:</strong> <code class="docutils literal notranslate"><span class="pre">Target</span> <span class="pre">Boost::log</span> <span class="pre">already</span> <span class="pre">has</span> <span class="pre">an</span> <span class="pre">imported</span> <span class="pre">location</span></code></dt><dd><p>This problem is known to occur with the <code class="docutils literal notranslate"><span class="pre">2020b</span></code> toolchain on SDCC. Add the CMake
+configuration option <code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">Boost_NO_BOOST_CMAKE=ON</span></code> to work around the problem.</p>
+</dd>
+</dl>
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="api_ids.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: IDS API" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              IDS API
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="matlab_on_windows.html" class="md-footer__link md-footer__link--next" aria-label="Next: Windows Installation Guide" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Windows Installation Guide
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2026, ITER Organization.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    6.2.1.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.sections", "navigation.instant", "navigation.top", "toc.follow", "toc.sticky", "announce.dismiss"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": null, "versionPath": "../versions.js"}}</script>
+    
+      
+        <script src="_static/sphinx_immaterial_theme.f9d9eeeb247ace16c.min.js"></script>
+    
+  </body>
+</html>

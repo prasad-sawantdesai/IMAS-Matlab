@@ -1,0 +1,1177 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="">
+    
+    
+      
+        <title>IDS API - MATLAB Access Layer  documentation</title>
+      
+    
+    
+      
+        
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.079acc6b1264de723.min.css" />
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="green">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ids_get" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="MATLAB Access Layer  documentation" class="md-header__button md-logo" aria-label="MATLAB Access Layer  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MATLAB Access Layer  documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              IDS API
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="green"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://git.iter.org/projects/IMAS/repos/access-layer" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M22.2 32A16 16 0 0 0 6 47.8a26.35 26.35 0 0 0 .2 2.8l67.9 412.1a21.77 21.77 0 0 0 21.3 18.2h325.7a16 16 0 0 0 16-13.4L505 50.7a16 16 0 0 0-13.2-18.3 24.58 24.58 0 0 0-2.8-.2L22.2 32zm285.9 297.8h-104l-28.1-147h157.3l-25.2 147z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Access Layer
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="MATLAB Access Layer  documentation" class="md-nav__button md-logo" aria-label="MATLAB Access Layer  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+    </a>
+    MATLAB Access Layer  documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://git.iter.org/projects/IMAS/repos/access-layer" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M22.2 32A16 16 0 0 0 6 47.8a26.35 26.35 0 0 0 .2 2.8l67.9 412.1a21.77 21.77 0 0 0 21.3 18.2h325.7a16 16 0 0 0 16-13.4L505 50.7a16 16 0 0 0-13.2-18.3 24.58 24.58 0 0 0-2.8-.2L22.2 32zm285.9 297.8h-104l-28.1-147h157.3l-25.2 147z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Access Layer
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          <span class="md-ellipsis">Contents:<wbr></span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Contents:" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Contents:<wbr></span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting_started.html" class="md-nav__link">
+        <span class="md-ellipsis">Getting Started with IMAS-<wbr>MATLAB</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="imas.html" class="md-nav__link">
+        <span class="md-ellipsis">IMAS overview</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="using_al.html" class="md-nav__link">
+        <span class="md-ellipsis">Using the IMAS-<wbr>MATLAB</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="load_store_ids.html" class="md-nav__link">
+        <span class="md-ellipsis">Loading and storing IMAS data</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="use_ids.html" class="md-nav__link">
+        <span class="md-ellipsis">Use Interface Data Structures</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="imas_uri.html" class="md-nav__link">
+        <span class="md-ellipsis">IMAS Data Entry URIs</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="identifiers.html" class="md-nav__link">
+        <span class="md-ellipsis">Identifiers</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          <span class="md-ellipsis">Examples</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Examples</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="examples/examples_ToC.html" class="md-nav__link">
+        <span class="md-ellipsis">Basic Examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          <span class="md-ellipsis">API documentation</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API documentation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">API documentation</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api_dbentry.html" class="md-nav__link">
+        <span class="md-ellipsis">Data entry API</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span class="md-ellipsis">IDS API</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        <span class="md-ellipsis">IDS API</span>
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ids_get" class="md-nav__link">
+    <span title="ids_get (MATLAB function)" class="md-ellipsis">ids_<wbr>get</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ids_get_slice" class="md-nav__link">
+    <span title="ids_get_slice (MATLAB function)" class="md-ellipsis">ids_<wbr>get_<wbr>slice</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ids_get_sample" class="md-nav__link">
+    <span title="ids_get_sample (MATLAB function)" class="md-ellipsis">ids_<wbr>get_<wbr>sample</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ids_put" class="md-nav__link">
+    <span title="ids_put (MATLAB function)" class="md-ellipsis">ids_<wbr>put</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ids_put_slice" class="md-nav__link">
+    <span title="ids_put_slice (MATLAB function)" class="md-ellipsis">ids_<wbr>put_<wbr>slice</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#imas_serialize" class="md-nav__link">
+    <span title="imas_serialize (MATLAB function)" class="md-ellipsis">imas_<wbr>serialize</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#imas_deserialize" class="md-nav__link">
+    <span title="imas_deserialize (MATLAB function)" class="md-ellipsis">imas_<wbr>deserialize</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ids_init" class="md-nav__link">
+    <span title="ids_init (MATLAB function)" class="md-ellipsis">ids_<wbr>init</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ids_allocate" class="md-nav__link">
+    <span title="ids_allocate (MATLAB function)" class="md-ellipsis">ids_<wbr>allocate</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ids_isdefined" class="md-nav__link">
+    <span title="ids_isdefined (MATLAB function)" class="md-ellipsis">ids_<wbr>isdefined</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ids_validate" class="md-nav__link">
+    <span title="ids_validate (MATLAB function)" class="md-ellipsis">ids_<wbr>validate</span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          <span class="md-ellipsis">AL Developer documentation</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="AL Developer documentation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">AL Developer documentation</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="building_installing.html" class="md-nav__link">
+        <span class="md-ellipsis">Building and installing the IMAS-<wbr>MATLAB</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="matlab_on_windows.html" class="md-nav__link">
+        <span class="md-ellipsis">Windows Installation Guide</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dev_guide.html" class="md-nav__link">
+        <span class="md-ellipsis">IMAS-<wbr>MATLAB development guide</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ids_get" class="md-nav__link">
+    <span title="ids_get (MATLAB function)" class="md-ellipsis">ids_<wbr>get</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ids_get_slice" class="md-nav__link">
+    <span title="ids_get_slice (MATLAB function)" class="md-ellipsis">ids_<wbr>get_<wbr>slice</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ids_get_sample" class="md-nav__link">
+    <span title="ids_get_sample (MATLAB function)" class="md-ellipsis">ids_<wbr>get_<wbr>sample</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ids_put" class="md-nav__link">
+    <span title="ids_put (MATLAB function)" class="md-ellipsis">ids_<wbr>put</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ids_put_slice" class="md-nav__link">
+    <span title="ids_put_slice (MATLAB function)" class="md-ellipsis">ids_<wbr>put_<wbr>slice</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#imas_serialize" class="md-nav__link">
+    <span title="imas_serialize (MATLAB function)" class="md-ellipsis">imas_<wbr>serialize</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#imas_deserialize" class="md-nav__link">
+    <span title="imas_deserialize (MATLAB function)" class="md-ellipsis">imas_<wbr>deserialize</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ids_init" class="md-nav__link">
+    <span title="ids_init (MATLAB function)" class="md-ellipsis">ids_<wbr>init</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ids_allocate" class="md-nav__link">
+    <span title="ids_allocate (MATLAB function)" class="md-ellipsis">ids_<wbr>allocate</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ids_isdefined" class="md-nav__link">
+    <span title="ids_isdefined (MATLAB function)" class="md-ellipsis">ids_<wbr>isdefined</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ids_validate" class="md-nav__link">
+    <span title="ids_validate (MATLAB function)" class="md-ellipsis">ids_<wbr>validate</span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                  
+
+
+<h1 id="ids-api">IDS API<a class="headerlink" href="#ids-api" title="Permalink to this heading">¶</a></h1>
+<dl class="mat function objdesc">
+<dt class="sig sig-object highlight mat" id="ids_get">
+<span class="sig-name descname"><span class="pre">ids_get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ids_get" title="Permalink to this definition">¶</a></dt>
+<dd><p>out = ids_get(expIdx, IDSpath[, occurence])</p>
+<p>Read the contents of the an IDS into memory.</p>
+<p>This method fetches the IDS in its entirety, with all time slices it may
+contain. See ids_get_slice for reading a specific time slice.</p>
+<p>Empty fields within the IDS in the Data Entry are returned with the
+default values indicated in <a class="reference internal" href="use_ids.html#default-values"><span class="std std-ref">Default values</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>expIdx</strong> – Data entry context created with
+imas_open_uri, imas_open_env, imas_open_env_backend,
+imas_create_env or imas_create_env_backend.</p></li>
+<li><p><strong>IDSpath</strong> – Name of the IDS to retrieve, e.g. ‘core_profiles’.</p></li>
+<li><p><strong>occurence</strong> – Which occurrence of the IDS to read. Defaults to 0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The loaded IDS.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="mat function objdesc">
+<dt class="sig sig-object highlight mat" id="ids_get_slice">
+<span class="sig-name descname"><span class="pre">ids_get_slice</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ids_get_slice" title="Permalink to this definition">¶</a></dt>
+<dd><p>out = ids_get_slice(expIdx, IDSpath[, occurence], time, interp)</p>
+<p>Read a single time slice from an IDS in this Database Entry.</p>
+<p>This method fetches the IDS object with all constant/static data filled.
+The dynamic data is interpolated on the requested time slice. This means
+that the size of the time dimension in the returned data is 1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>expIdx</strong> – Data entry context created with
+imas_open_uri, imas_open_env, imas_open_env_backend,
+imas_create_env or imas_create_env_backend.</p></li>
+<li><p><strong>IDSpath</strong> – Name of the IDS to retrieve, e.g. ‘core_profiles’.</p></li>
+<li><p><strong>occurence</strong> – Which occurrence of the IDS to read. Defaults to 0.</p></li>
+<li><p><strong>time</strong> – Requested time slice.</p></li>
+<li><p><strong>interp</strong> – interpolation method. Allowed values are:
+CLOSEST_SAMPLE = 1, PREVIOUS_SAMPLE = 2 or INTERPOLATION = 3</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The loaded IDS.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="mat function objdesc">
+<dt class="sig sig-object highlight mat" id="ids_get_sample">
+<span class="sig-name descname"><span class="pre">ids_get_sample</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ids_get_sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>out = ids_get_sample(expIdx, IDSpath[, occurence], tmin, tmax, dtime, interp)</p>
+<p>Read the contents of an IDS over a specific time range into memory.</p>
+<p>This method fetches an IDS with all time slices in a time range between tmin and tmax.</p>
+<ol class="arabic">
+<li><p>In case of no interpolation in the time range, interp must be set to 0 and dtime = [].</p>
+<p>This mode returns an IDS object with all constant/static data filled. The
+dynamic data is retrieved for the provided time range [tmin, tmax].</p>
+</li>
+<li><p>The method can interpolate time slices in the time range, if interp is not set to 0 and dtime = [step] (double list of size equals 1) where ‘step’ is the constant time between two slices.</p>
+<p>This mode will generate an IDS with a homogeneous time vector [tmin, tmin + dtime, tmin + 2*dtime, …] up to tmax. The chosen interpolation
+method will have no effect on the time vector, but may have an impact on the other dynamic values.
+The returned IDS always has ‘ids_properties.homogeneous_time = 1’.</p>
+</li>
+<li><p>Interpolation of dynamic data on an explicit time base. This method is selected when dtime and interp are provided. dtime must be a double list of size larger than 1.</p>
+<p>This mode will generate an IDS with a homogeneous time vector equal to dtime. tmin and tmax are ignored in this mode.
+The chosen interpolation method will have no effect on the time vector, but may have an impact on the other dynamic values. The returned IDS always has
+‘ids_properties.homogeneous_time = 1’.</p>
+</li>
+</ol>
+<p>Empty fields within the IDS in the Data Entry are returned with default values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>expIdx</strong> – Data entry context created with
+imas_open_uri, imas_open_env, imas_open_env_backend,
+imas_create_env or imas_create_env_backend.</p></li>
+<li><p><strong>IDSpath</strong> – Name of the IDS to retrieve, e.g. ‘core_profiles’.</p></li>
+<li><p><strong>occurence</strong> – Which occurrence of the IDS to read. Defaults to 0.</p></li>
+<li><p><strong>tmin</strong> – Lower bound of the requested time range</p></li>
+<li><p><strong>tmax</strong> – Upper bound of the requested time range, must be larger than or equal to tmin</p></li>
+<li><p><strong>dtime</strong> – Interval to use when interpolating, must be a list
+containing an explicit time base to interpolate.</p></li>
+<li><p><strong>interp</strong> – interpolation method. Allowed values are:
+CLOSEST_SAMPLE = 1, PREVIOUS_SAMPLE = 2 or INTERPOLATION = 3</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The loaded IDS.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="mat function objdesc">
+<dt class="sig sig-object highlight mat" id="ids_put">
+<span class="sig-name descname"><span class="pre">ids_put</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ids_put" title="Permalink to this definition">¶</a></dt>
+<dd><p>ids_put(expIdx, IDSpath[, occurence], IDS)</p>
+<p>Write the contents of an IDS into this Database Entry.</p>
+<p>The IDS is written entirely, with all time slices it may contain.</p>
+<p>The IDS object can have none or many empty fields, empty fields are ignored
+and remain empty in the data entry. Some fields are required to be filled
+before calling this method, see <a class="reference internal" href="use_ids.html#default-values"><span class="std std-ref">Default values</span></a>.</p>
+<div class="caution admonition">
+<p class="admonition-title">Caution</p>
+<p>The put method deletes any previously existing data within the target IDS
+occurrence in the Database Entry.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>expIdx</strong> – Data entry context created with
+imas_open_uri, imas_open_env, imas_open_env_backend,
+imas_create_env or imas_create_env_backend.</p></li>
+<li><p><strong>IDSpath</strong> – Name of the IDS to store, e.g. ‘core_profiles’.</p></li>
+<li><p><strong>occurence</strong> – Which occurrence of the IDS to read. Defaults to 0.</p></li>
+<li><p><strong>IDS</strong> – The IDS to store.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="mat function objdesc">
+<dt class="sig sig-object highlight mat" id="ids_put_slice">
+<span class="sig-name descname"><span class="pre">ids_put_slice</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ids_put_slice" title="Permalink to this definition">¶</a></dt>
+<dd><p>ids_put_slice(expIdx, IDSpath[, occurence], IDS)</p>
+<p>Append a time slice of the provided IDS to the Database Entry.</p>
+<p>Time slices must be appended in strictly increasing time order, since the
+Access Layer is not reordering time arrays. Doing otherwise will result in
+non-monotonic time arrays, which will create confusion and make subsequent
+get_slice() commands to fail.</p>
+<p>Although being put progressively time slice by time slice, the final IDS must
+be compliant with the data dictionary. A typical error when constructing IDS
+variables time slice by time slice is to change the size of the IDS fields
+during the time loop, which is not allowed but for the children of an array
+of structure which has time as its coordinate.</p>
+<p>The put_slice() command is appending data, so does not modify previously
+existing data within the target IDS occurrence in the Data Entry.</p>
+<p>It is possible possible to append several time slices to a node of the IDS
+in one put_slice() call, however the user must ensure that the size of the
+time dimension of the node remains consistent with the size of its timebase.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>expIdx</strong> – Data entry context created with
+imas_open_uri, imas_open_env, imas_open_env_backend,
+imas_create_env or imas_create_env_backend.</p></li>
+<li><p><strong>IDSpath</strong> – Name of the IDS to store, e.g. ‘core_profiles’.</p></li>
+<li><p><strong>occurence</strong> – Which occurrence of the IDS to read. Defaults to 0.</p></li>
+<li><p><strong>IDS</strong> – The IDS to store.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="mat function objdesc">
+<dt class="sig sig-object highlight mat" id="imas_serialize">
+<span class="sig-name descname"><span class="pre">imas_serialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#imas_serialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>data = imas_serialize(ids, ids_name[, protocol])</p>
+<p>Serialize the contents of this IDS into binary data.</p>
+<p>There are currently two different serialization protocols. The ASCII protocol
+serializes the data though the ASCII backend. This is a simpler human readable
+protocol, but it’s also less efficient than the (newer) Flexbuffers protocol.
+The latter is the default and should be preferred.</p>
+<p>The ID of the used serializer protocol is kept in the header of the serialized
+buffer, such that specifying the protocol is not necessary when deserializing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ids</strong> – IDS to serialize.</p></li>
+<li><p><strong>ids_name</strong> – Name of the ids.</p></li>
+<li><p><strong>protocol</strong> – Protocol type (default: DEFAULT_SERIALIZER_PROTOCOL)</p></li>
+</ul>
+</dd>
+</dl>
+<p class="example rubric">Example</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><code><span class="n">ids</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ids_init</span><span class="p">(</span><span class="s">&#39;pf_active&#39;</span><span class="p">)</span>
+<span class="c">% populate the IDS</span>
+<span class="c">% ...</span>
+<span class="n">data</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">imas_serialize</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;pf_active&#39;</span><span class="p">)</span>
+
+<span class="c">% move the binary data around, for example to another process using</span>
+<span class="c">% memory communication, then deserialize</span>
+<span class="n">pf_active2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">imas_deserialize</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;pf_active&#39;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</dd></dl>
+
+<dl class="mat function objdesc">
+<dt class="sig sig-object highlight mat" id="imas_deserialize">
+<span class="sig-name descname"><span class="pre">imas_deserialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#imas_deserialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>ids = imas_deserialize(data, ids_name)</p>
+<p>Deserialize the provided binary data into an IDS.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – serialized data</p></li>
+<li><p><strong>ids_name</strong> – name of the ids</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Deserialized IDS</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="mat function objdesc">
+<dt class="sig sig-object highlight mat" id="ids_init">
+<span class="sig-name descname"><span class="pre">ids_init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ids_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>ids = ids_init(IDSname)</p>
+<p>Generate an IDS of specified type with default field values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>IDSname</strong> – name of the IDS to generate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Empty IDS of the requested type.</p>
+</dd>
+</dl>
+<p>NOTE: The array of structures in the resulting IDS will be
+empty. This is not as in ids_gen where they are all of size 1. Use
+ids_allocate to fill the array of structures.</p>
+<p>See also: <code class="docutils literal notranslate"><span class="pre">ids_allocate</span></code></p>
+</dd></dl>
+
+<dl class="mat function objdesc">
+<dt class="sig sig-object highlight mat" id="ids_allocate">
+<span class="sig-name descname"><span class="pre">ids_allocate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ids_allocate" title="Permalink to this definition">¶</a></dt>
+<dd><p>ids_allocate(IDSname, AOSpath, size)</p>
+<p>Allocate the desired array of structure to the requested size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>IDSname</strong> – The name of the IDS to modify.</p></li>
+<li><p><strong>AOSpath</strong> – Path to the desired array of structure in the IDS
+(‘/’ separated following DD convention)</p></li>
+<li><p><strong>size</strong> – Desired size.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="example rubric">Example</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><code><span class="nb">eq</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ids_init</span><span class="p">(</span><span class="s">&#39;equilibrium&#39;</span><span class="p">);</span>
+<span class="nb">eq</span><span class="p">.</span><span class="n">time_slice</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ids_allocate</span><span class="p">(</span><span class="s">&#39;equilibrium&#39;</span><span class="p">,</span><span class="s">&#39;time_slice&#39;</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
+<span class="nb">eq</span><span class="p">.</span><span class="n">time_slice</span><span class="p">{</span><span class="mi">1</span><span class="p">}.</span><span class="n">profiles_2d</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">...</span>
+<span class="w">    </span><span class="n">ids_allocate</span><span class="p">(</span><span class="s">&#39;equilibrium&#39;</span><span class="p">,</span><span class="s">&#39;time_slice/profiles_2d&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+</code></pre></div>
+</div>
+<p>See also`` : ids_init``</p>
+</dd></dl>
+
+<dl class="mat function objdesc">
+<dt class="sig sig-object highlight mat" id="ids_isdefined">
+<span class="sig-name descname"><span class="pre">ids_isdefined</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ids_isdefined" title="Permalink to this definition">¶</a></dt>
+<dd><p>is_defined = ids_isdefined(ids)</p>
+<p>Verifies if given IDS is ‘defined’ by checking if its field <cite>ids_properties.homogeneous_time</cite> is set to a valid value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ids</strong> – IDS to check.</p>
+</dd>
+</dl>
+<p class="example rubric">Example</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><code><span class="n">magnetics_ids</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ids_gen</span><span class="p">(</span><span class="s">&#39;magnetics&#39;</span><span class="p">)</span>
+<span class="n">is_defined</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ids_isdefined</span><span class="p">(</span><span class="n">magnetics_ids</span><span class="p">)</span><span class="w"> </span><span class="c">%false</span>
+<span class="c">% set the ids_properties.homogeneous_time field</span>
+<span class="n">magnetics_ids</span><span class="p">.</span><span class="n">ids_properties</span><span class="p">.</span><span class="n">homogeneous_time</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="n">is_defined</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ids_isdefined</span><span class="p">(</span><span class="n">magnetics_ids</span><span class="p">)</span><span class="w"> </span><span class="c">%true</span>
+</code></pre></div>
+</div>
+</dd></dl>
+
+<dl class="mat function objdesc">
+<dt class="sig sig-object highlight mat" id="ids_validate">
+<span class="sig-name descname"><span class="pre">ids_validate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ids_validate" title="Permalink to this definition">¶</a></dt>
+<dd><p>ids_validate(IDSname, IdsData)</p>
+<p>Read the contents of the IDS and validate the consistency.</p>
+<p>This method validate the IDS in its entirety.
+It can raise an error if the data are not consistent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>IDSname</strong> – Name of the IDS to validate, e.g. ‘core_profiles’.</p></li>
+<li><p><strong>IdsData</strong> – IDS structure data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Nothing.</p>
+</dd>
+</dl>
+</dd></dl>
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="api_dbentry.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Data entry API" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Data entry API
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="building_installing.html" class="md-footer__link md-footer__link--next" aria-label="Next: Building and installing the IMAS-MATLAB" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Building and installing the IMAS-MATLAB
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2026, ITER Organization.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    6.2.1.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.sections", "navigation.instant", "navigation.top", "toc.follow", "toc.sticky", "announce.dismiss"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": null, "versionPath": "../versions.js"}}</script>
+    
+      
+        <script src="_static/sphinx_immaterial_theme.f9d9eeeb247ace16c.min.js"></script>
+    
+  </body>
+</html>
